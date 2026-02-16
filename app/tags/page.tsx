@@ -1,5 +1,16 @@
 import Link from "next/link";
 import { getAllTags, tagToSlug, getPostsByTag } from "@/lib/tags";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Tags',
+  description: 'Browse writing by topic: blockchain, architecture, security, AI, and more.',
+  openGraph: {
+    title: 'Tags | Alex Ayekha',
+    description: 'Browse writing by topic: blockchain, architecture, security, AI, and more.',
+    url: 'https://alexayekha.tech/tags',
+  },
+};
 
 export default function TagsPage() {
   const tags = getAllTags();

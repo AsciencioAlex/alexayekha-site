@@ -1,4 +1,15 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'CTO and MSc IT candidate focused on building production-grade systems across blockchain infrastructure, cryptography, and applied AI.',
+  openGraph: {
+    title: 'About | Alex Ayekha',
+    description: 'CTO and MSc IT candidate focused on building production-grade systems across blockchain infrastructure, cryptography, and applied AI.',
+    url: 'https://alexayekha.tech/about',
+  },
+};
 
 export default function About() {
   return (

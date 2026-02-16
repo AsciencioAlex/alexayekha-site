@@ -1,5 +1,16 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Writing',
+  description: 'High-signal notes on applied AI, blockchain infrastructure, and executive engineering.',
+  openGraph: {
+    title: 'Writing | Alex Ayekha',
+    description: 'High-signal notes on applied AI, blockchain infrastructure, and executive engineering.',
+    url: 'https://alexayekha.tech/writing',
+  },
+};
 
 export default function WritingIndex() {
   const posts = getAllPosts();

@@ -1,3 +1,11 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Alex Ayekha | CTO & MSc IT Candidate',
+  description: 'CTO & MSc IT Candidate focused on applied AI, blockchain infrastructure, cryptography, and production-grade systems. Writing on architecture, security, and real-world engineering.',
+};
+
 export default function Home() {
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
