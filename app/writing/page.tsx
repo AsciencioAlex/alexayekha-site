@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/mdx";
+import { getAllPosts } from "@/lib/posts";
 
 export default function WritingIndex() {
-  const posts = getAllPosts("writing");
+  const posts = getAllPosts();
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <header className="space-y-3">
@@ -13,15 +13,19 @@ export default function WritingIndex() {
       </header>
 
       <section className="mt-10 space-y-4">
-        {posts.map((post) => (
+        {posts.map((p) => (
           <Link
-            key={post.metadata.slug}
-            href={`/writing/${post.metadata.slug}`}
+            key={p.slug}
+            href={`/writing/${p.slug}`}
             className="block rounded-xl border p-4 hover:bg-neutral-50"
           >
-            <div className="text-sm text-neutral-500">{post.metadata.label}</div>
-            <div className="font-medium">{post.metadata.title}</div>
-            <div className="mt-1 text-sm text-neutral-600">{post.metadata.desc}</div>
+            <div className="text-sm text-neutral-500">
+              {p.category ? `${p.category} • ` : ""}{p.date}
+            </div>
+            <div className="font-medium">{p.title}</div>
+            {p.summary ? (
+              <div className="mt-1 text-sm text-neutral-600">{p.summary}</div>
+            ) : null}
           </Link>
         ))}
       </section>
