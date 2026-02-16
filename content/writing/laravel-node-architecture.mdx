@@ -1,0 +1,244 @@
+---
+title: "Architecting Laravel + Node.js Hybrid Backends"
+date: "2026-02-05"
+label: "Systems"
+desc: "Patterns for queues, events, crypto listeners, observability, and scaling."
+tags: ["architecture", "laravel", "nodejs", "backend"]
+---
+
+## Why Hybrid?
+
+You're not choosing Laravel **or** Node.js. You're using the right tool for each job.
+
+**Laravel excels at:**
+- Business logic & data modeling
+- Admin interfaces
+- Complex querying
+- Developer velocity
+
+**Node.js excels at:**
+- WebSocket connections
+- Event streaming
+- Blockchain listeners
+- High-concurrency I/O
+
+## Architecture Pattern
+
+```
+┌─────────────┐
+│   Laravel   │  HTTP API, business logic, DB operations
+│   (PHP)     │
+└──────┬──────┘
+       │ Redis Queue
+       ↓
+┌─────────────┐
+│  Node.js    │  WebSocket, blockchain, real-time events
+│  Workers    │
+└─────────────┘
+```
+
+## Communication Layer
+
+### Option 1: Redis Queue (Recommended)
+
+Laravel dispatches, Node.js consumes.
+
+**Laravel (Dispatch)**
+```php
+// app/Jobs/ProcessBlockchainDeposit.php
+class ProcessBlockchainDeposit implements ShouldQueue
+{
+    public function __construct(
+        public string $txHash,
+        public string $userAddress,
+        public string $amount
+    ) {}
+}
+
+// Dispatch from controller
+ProcessBlockchainDeposit::dispatch($tx->hash, $user->address, $amount);
+```
+
+**Node.js (Consume)**
+```typescript
+// workers/blockchain-processor.ts
+import Queue from "bull";
+
+const queue = new Queue("default", {
+  redis: { host: "localhost", port: 6379 }
+});
+
+queue.process("ProcessBlockchainDeposit", async (job) => {
+  const { txHash, userAddress, amount } = job.data;
+  
+  // Verify on-chain
+  const receipt = await provider.getTransactionReceipt(txHash);
+  
+  if (receipt.confirmations >= 12) {
+    // Update Laravel DB via API or direct write
+    await updateDepositStatus(txHash, "confirmed");
+  }
+});
+```
+
+### Option 2: Direct Database Events
+
+Use PostgreSQL `LISTEN/NOTIFY` or MySQL triggers.
+
+```typescript
+// Node.js listener
+client.query("LISTEN new_deposit");
+
+client.on("notification", async (msg) => {
+  const deposit = JSON.parse(msg.payload);
+  await processDeposit(deposit);
+});
+```
+
+## Real-World Pattern: Crypto Deposit Detection
+
+### Laravel: HTTP + Business Logic
+
+```php
+// routes/api.php
+Route::post('/deposits/webhook', [DepositController::class, 'webhook']);
+
+// app/Http/Controllers/DepositController.php
+public function webhook(Request $request)
+{
+    $validated = $request->validate([
+        'tx_hash' => 'required|string',
+        'amount' => 'required|numeric',
+        'user_id' => 'required|exists:users,id',
+    ]);
+
+    $deposit = Deposit::create([
+        'user_id' => $validated['user_id'],
+        'tx_hash' => $validated['tx_hash'],
+        'amount' => $validated['amount'],
+        'status' => 'pending',
+        'confirmations' => 0,
+    ]);
+
+    // Trigger Node.js listener
+    event(new DepositReceived($deposit));
+
+    return response()->json(['status' => 'processing']);
+}
+```
+
+### Node.js: Blockchain Listener
+
+```typescript
+// src/listeners/ethereum.ts
+import { ethers } from "ethers";
+
+const DEPOSIT_ADDRESS = "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb";
+
+async function listenForDeposits() {
+  provider.on("block", async (blockNumber) => {
+    const block = await provider.getBlockWithTransactions(blockNumber);
+    
+    for (const tx of block.transactions) {
+      if (tx.to?.toLowerCase() === DEPOSIT_ADDRESS.toLowerCase()) {
+        await axios.post("http://laravel-api.local/deposits/webhook", {
+          tx_hash: tx.hash,
+          amount: ethers.utils.formatEther(tx.value),
+          user_id: await resolveUserId(tx.from),
+        });
+      }
+    }
+  });
+}
+```
+
+## Observability
+
+### Shared Logging (Fluentd/Loki)
+
+Both Laravel and Node.js push to centralized logging.
+
+**Laravel**
+```php
+Log::channel('stack')->info('Deposit processed', [
+    'tx_hash' => $deposit->tx_hash,
+    'user_id' => $deposit->user_id,
+    'amount' => $deposit->amount,
+    'service' => 'laravel',
+]);
+```
+
+**Node.js**
+```typescript
+logger.info("Deposit confirmed", {
+  txHash: receipt.transactionHash,
+  confirmations: receipt.confirmations,
+  service: "node-worker",
+});
+```
+
+### Health Checks
+
+Expose health endpoints from both:
+
+```php
+// Laravel: routes/api.php
+Route::get('/health', fn() => response()->json([
+    'status' => 'ok',
+    'db' => DB::connection()->getPdo() ? 'connected' : 'down',
+    'redis' => Redis::connection()->ping() ? 'connected' : 'down',
+]));
+```
+
+```typescript
+// Node.js: server.ts
+app.get("/health", async (req, res) => {
+  const redisOk = await redis.ping() === "PONG";
+  const providerOk = await provider.getBlockNumber() > 0;
+
+  res.json({
+    status: redisOk && providerOk ? "ok" : "degraded",
+    redis: redisOk,
+    provider: providerOk,
+  });
+});
+```
+
+## Scaling Strategy
+
+### Horizontal Scaling
+
+- **Laravel:** Behind load balancer (Nginx/ALB)
+- **Node.js Workers:** Multiple instances consuming same queue
+- **Redis:** Cluster or Sentinel for HA
+
+### Vertical Concerns
+
+- **Database Pooling:** Use PgBouncer/ProxySQL
+- **Queue Priority:** Separate critical jobs (`deposits-queue` vs `emails-queue`)
+- **Rate Limiting:** Shared Redis for cross-service rate limits
+
+## When This Pattern Works
+
+✅ Need real-time features **and** complex business logic  
+✅ Blockchain/crypto integrations (Node.js for listeners)  
+✅ Team has both PHP and JS expertise  
+✅ Can justify operational complexity  
+
+## When to Avoid
+
+❌ Team is small (fewer than 3 backend engineers)  
+❌ Pure CRUD application  
+❌ No real-time requirements  
+
+## Key Takeaways
+
+1. Use Laravel for business logic, Node.js for I/O-heavy tasks
+2. Redis queue is the simplest communication layer
+3. Centralized logging is non-negotiable
+4. Health checks for both services
+5. Don't over-architect — start with one Node.js worker
+
+---
+
+**Related:** [Building Real-Time Driver Tracking Systems](#)

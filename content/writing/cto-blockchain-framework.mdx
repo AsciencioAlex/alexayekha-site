@@ -1,0 +1,132 @@
+---
+title: "A CTO Framework: When to Use Blockchain (and When Not To)"
+date: "2026-02-10"
+label: "Strategy"
+desc: "A decision model grounded in cost, trust boundaries, and operational realities."
+tags: ["strategy", "blockchain", "architecture"]
+---
+
+## The Question Every CTO Gets
+
+"Should we use blockchain for this?"
+
+After building multiple production blockchain systems, here's my framework for answering that question.
+
+## The Decision Matrix
+
+Use blockchain when **all three** are true:
+
+1. **Multiple parties need to verify the same data**
+2. **Trust boundaries exist** (parties don't fully trust each other)
+3. **Audit trail is critical** (immutability matters)
+
+If any of these is false, use a database.
+
+## Real Examples
+
+### ✅ Good Use Case: Multi-Party Settlement
+
+**Problem:** Three companies need to track shared transactions without a central authority.
+
+```
+Company A <-> Shared Ledger <-> Company B
+                  |
+              Company C
+```
+
+- Multiple parties: ✅
+- Trust boundaries: ✅
+- Audit trail critical: ✅
+
+**Solution:** Private blockchain (Hyperledger, Polygon CDK, or consortium chain)
+
+### ❌ Bad Use Case: User Authentication
+
+**Problem:** Need to store user login credentials.
+
+- Multiple parties: ❌ (just your system)
+- Trust boundaries: ❌ (you control everything)
+- Audit trail: Not primary concern
+
+**Solution:** PostgreSQL + proper security. Don't overcomplicate.
+
+## Cost Analysis
+
+Blockchain is **expensive**. Here's what you're paying for:
+
+| Operation | Traditional DB | Blockchain | Multiplier |
+|-----------|---------------|------------|------------|
+| Write | $0.001 | $0.50 | 500x |
+| Read | $0.0001 | $0.01 | 100x |
+| Storage/GB/mo | $0.10 | $50+ | 500x+ |
+
+These costs are **not academic**. At scale, they're brutal.
+
+## The 3-Question Filter
+
+Before implementing blockchain, ask:
+
+### 1. Can I use a signed database log instead?
+
+```typescript
+// Often this is enough
+interface SignedEntry {
+  data: any;
+  timestamp: number;
+  signature: string; // ECDSA signature
+  previousHash: string;
+}
+```
+
+If a signed, append-only log solves your problem, do that instead.
+
+### 2. Who actually needs decentralization?
+
+Be honest: Do your users care? Or is this "blockchain for blockchain's sake"?
+
+### 3. What happens when gas fees spike?
+
+In 2021, Ethereum gas hit $200+ per transaction. If your business model breaks at high gas prices, rethink the approach.
+
+## When to Actually Use It
+
+**Treasury Management** — Multiple signers, high-value transactions, full audit trail.
+
+**Cross-Organization Data Sharing** — No trusted central party exists.
+
+**Supply Chain with Adversarial Parties** — Need verifiable provenance across untrusted actors.
+
+**Tokenized Assets** — When you actually need composability with DeFi or secondary markets.
+
+## Implementation Reality Check
+
+Building production blockchain systems requires:
+
+- **3x longer development time** vs traditional systems
+- **Specialized security review** (smart contract audits aren't optional)
+- **Operational complexity** (key management, gas price monitoring, node infrastructure)
+- **Different failure modes** (immutability can be a bug when you need to fix things)
+
+## Final Framework
+
+```
+START -> Multiple parties? -> No -> Use PostgreSQL
+          | Yes
+       Trust boundaries? -> No -> Use PostgreSQL
+          | Yes
+       Audit critical? -> No -> Use PostgreSQL
+          | Yes
+       Can justify 10-500x cost? -> No -> Use signed logs
+          | Yes
+       -> Blockchain might be right
+```
+
+## Conclusion
+
+Blockchain is a powerful tool **when you need it**. Most systems don't.
+
+The best engineering decision is often the simplest one that meets requirements.
+
+---
+
+**Next:** [Architecting Laravel + Node.js Hybrid Backends](#)

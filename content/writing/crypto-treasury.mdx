@@ -1,0 +1,92 @@
+---
+title: "Designing Secure Crypto Treasury Infrastructure"
+date: "2026-02-15"
+label: "Blockchain"
+desc: "A practical blueprint for multisig, controls, monitoring, and incident response."
+tags: ["blockchain", "security", "infrastructure"]
+---
+
+## Overview
+
+Building a secure crypto treasury requires balancing accessibility with security. This guide covers the practical engineering decisions for production-grade treasury infrastructure.
+
+## Architecture Principles
+
+1. **Multisig Everything** — No single point of failure
+2. **Defense in Depth** — Multiple security layers
+3. **Observability First** — Know what's happening in real-time
+4. **Incident Response** — Plan for compromise
+
+## Hot vs Cold Wallet Strategy
+
+### Hot Wallet (Operational)
+- Holds 5-10% of total treasury
+- 2-of-3 multisig minimum
+- Automated monitoring & alerts
+- Rate limiting on withdrawals
+
+```typescript
+interface HotWalletConfig {
+  signers: Address[];
+  threshold: number;
+  dailyLimit: BigNumber;
+  cooldownPeriod: number; // seconds
+}
+
+const operationalWallet: HotWalletConfig = {
+  signers: [DevOps, Finance, CTO],
+  threshold: 2,
+  dailyLimit: parseEther("50"),
+  cooldownPeriod: 3600, // 1 hour
+};
+```
+
+### Cold Wallet (Long-term Storage)
+- 90-95% of treasury
+- 3-of-5 or 4-of-7 multisig
+- Hardware wallet signers
+- Quarterly access reviews
+
+## Monitoring & Alerts
+
+Set up real-time monitoring for:
+
+- **Unexpected transactions** — Any tx not initiated through your system
+- **Balance changes** — Track inflows/outflows
+- **Gas price anomalies** — Detect potential attacks
+- **Signer changes** — Alert on ownership modifications
+
+```typescript
+async function monitorTreasury(address: Address) {
+  const balance = await provider.getBalance(address);
+  const threshold = parseEther("1000");
+  
+  if (balance.lt(threshold)) {
+    await alert("Treasury balance below threshold", {
+      current: formatEther(balance),
+      threshold: formatEther(threshold),
+    });
+  }
+}
+```
+
+## Incident Response Plan
+
+When compromise is suspected:
+
+1. **Freeze operations** — Pause all automated systems
+2. **Secure remaining funds** — Emergency transfer to backup wallet
+3. **Investigate** — Analyze transaction history, check signer security
+4. **Communicate** — Internal team + stakeholders
+5. **Post-mortem** — Document and improve
+
+## Key Takeaways
+
+- Never compromise on multisig for production treasuries
+- Monitoring is not optional — you need real-time visibility
+- Test your incident response before you need it
+- Separate hot/cold wallets based on operational needs
+
+---
+
+**Next:** [Building Automated Deposit Detection Systems](#)
