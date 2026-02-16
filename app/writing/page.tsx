@@ -10,6 +10,10 @@ export default function WritingIndex() {
         <p className="text-neutral-700">
           High-signal notes on applied AI, blockchain infrastructure, and executive engineering.
         </p>
+        <div className="flex gap-4 text-sm">
+          <a className="underline text-neutral-600" href="/rss.xml">RSS</a>
+          <Link className="underline text-neutral-600" href="/tags">Tags</Link>
+        </div>
       </header>
 
       <section className="mt-10 space-y-4">

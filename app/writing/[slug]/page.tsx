@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import fs from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { tagToSlug } from "@/lib/tags";
 
 // Required for static export: prebuild all routes
 export function generateStaticParams() {
@@ -55,6 +56,19 @@ export default async function PostPage({
         <h1 className="text-3xl font-semibold tracking-tight">{meta.title}</h1>
         {meta.summary ? (
           <p className="text-neutral-700 leading-relaxed">{meta.summary}</p>
+        ) : null}
+        {meta.tags && meta.tags.length > 0 ? (
+          <div className="flex flex-wrap gap-2 pt-2">
+            {meta.tags.map((tag) => (
+              <Link
+                key={tag}
+                href={`/tags/${tagToSlug(tag)}`}
+                className="rounded-full border px-2.5 py-1 text-xs hover:bg-neutral-50"
+              >
+                {tag}
+              </Link>
+            ))}
+          </div>
         ) : null}
       </header>
 

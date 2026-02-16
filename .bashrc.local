@@ -1,0 +1,3 @@
+
+# Quick post creation
+alias new-post="node scripts/new-post.js"
