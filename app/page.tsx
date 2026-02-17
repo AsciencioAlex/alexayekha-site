@@ -2,8 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Alex Ayekha | CTO & MSc IT Candidate',
-  description: 'CTO & MSc IT Candidate focused on applied AI, blockchain infrastructure, cryptography, and production-grade systems. Writing on architecture, security, and real-world engineering.',
+  title: 'Alex Ascencio Ayekha | Technology Executive & CTO',
+  description: 'Technology Executive and CTO with 8+ years building and scaling digital platforms across logistics, fintech, and enterprise systems. Writing on architecture, security, and systems thinking.',
 };
 
 export default function Home() {
@@ -12,11 +12,11 @@ export default function Home() {
       {/* Hero Section */}
       <header className="space-y-4 pb-8 border-b">
         <p className="text-sm tracking-wide text-neutral-500">
-          CTO • MSc IT Candidate • Applied AI & Blockchain Infrastructure
+          Technology Executive · CTO · Systems Architect
         </p>
 
         <h1 className="text-4xl font-semibold tracking-tight">
-          <span className="border-b-2" style={{ borderColor: 'var(--accent)' }}>Alex Ayekha</span>
+          <span className="border-b-2" style={{ borderColor: 'var(--accent)' }}>Alex Ascencio Ayekha</span>
         </h1>
 
         <p className="text-sm text-neutral-500">

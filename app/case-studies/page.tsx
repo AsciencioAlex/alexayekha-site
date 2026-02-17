@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Case Studies',
   description: 'Selected architecture and implementation work: wallet infrastructure, treasury automation, real-time tracking systems.',
   openGraph: {
-    title: 'Case Studies | Alex Ayekha',
+    title: 'Case Studies | Alex Ascencio Ayekha',
     description: 'Selected architecture and implementation work: wallet infrastructure, treasury automation, real-time tracking systems.',
     url: 'https://alexayekha.tech/case-studies',
   },

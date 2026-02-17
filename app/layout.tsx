@@ -15,33 +15,33 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://alexayekha.tech'),
   title: {
-    default: 'Alex Ayekha | CTO & MSc IT Candidate',
-    template: '%s | Alex Ayekha',
+    default: 'Alex Ascencio Ayekha | Technology Executive & CTO',
+    template: '%s | Alex Ascencio Ayekha',
   },
-  description: 'CTO & MSc IT Candidate focused on applied AI, blockchain infrastructure, cryptography, and production-grade systems. Writing on architecture, security, and real-world engineering.',
-  keywords: ['CTO', 'blockchain', 'cryptography', 'AI', 'architecture', 'engineering', 'security', 'infrastructure'],
-  authors: [{ name: 'Alex Ayekha', url: 'https://alexayekha.tech' }],
-  creator: 'Alex Ayekha',
+  description: 'Technology Executive and CTO with 8+ years building and scaling digital platforms across logistics, fintech, and enterprise systems. Writing on architecture, security, and systems thinking.',
+  keywords: ['CTO', 'technology executive', 'systems architect', 'blockchain', 'logistics', 'fintech', 'AI', 'architecture', 'engineering', 'security', 'infrastructure'],
+  authors: [{ name: 'Alex Ascencio Ayekha', url: 'https://alexayekha.tech' }],
+  creator: 'Alex Ascencio Ayekha',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://alexayekha.tech',
-    siteName: 'Alex Ayekha',
-    title: 'Alex Ayekha | CTO & MSc IT Candidate',
-    description: 'CTO & MSc IT Candidate focused on applied AI, blockchain infrastructure, cryptography, and production-grade systems.',
+    siteName: 'Alex Ascencio Ayekha',
+    title: 'Alex Ascencio Ayekha | Technology Executive & CTO',
+    description: 'Technology Executive and CTO with 8+ years building and scaling digital platforms across logistics, fintech, and enterprise systems.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Alex Ayekha',
+        alt: 'Alex Ascencio Ayekha',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alex Ayekha | CTO & MSc IT Candidate',
-    description: 'CTO & MSc IT Candidate focused on applied AI, blockchain infrastructure, cryptography, and production-grade systems.',
+    title: 'Alex Ascencio Ayekha | Technology Executive & CTO',
+    description: 'Technology Executive and CTO with 8+ years building and scaling digital platforms across logistics, fintech, and enterprise systems.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -65,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="alternate" type="application/rss+xml" title="Alex Ayekha RSS" href="/rss.xml" />
+        <link rel="alternate" type="application/rss+xml" title="Alex Ascencio Ayekha RSS" href="/rss.xml" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

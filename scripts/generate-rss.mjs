@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 
 const siteUrl = "https://alexayekha.tech";
-const siteTitle = "Alex Ayekha";
+const siteTitle = "Alex Ascencio Ayekha";
 const siteDescription =
   "CTO • MSc IT Candidate • Applied AI & Blockchain Infrastructure. Writing on systems, cryptography, and real-world engineering.";
 

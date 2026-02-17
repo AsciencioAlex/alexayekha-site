@@ -19,14 +19,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: meta.title,
       description: meta.summary || meta.title,
       keywords: meta.tags,
-      authors: [{ name: 'Alex Ayekha' }],
+      authors: [{ name: 'Alex Ascencio Ayekha' }],
       openGraph: {
         type: 'article',
         url: `https://alexayekha.tech/writing/${slug}/`,
         title: meta.title,
         description: meta.summary || meta.title,
         publishedTime: meta.date,
-        authors: ['Alex Ayekha'],
+        authors: ['Alex Ascencio Ayekha'],
         tags: meta.tags,
       },
       twitter: {

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Writing',
   description: 'High-signal notes on applied AI, blockchain infrastructure, and executive engineering.',
   openGraph: {
-    title: 'Writing | Alex Ayekha',
+    title: 'Writing | Alex Ascencio Ayekha',
     description: 'High-signal notes on applied AI, blockchain infrastructure, and executive engineering.',
     url: 'https://alexayekha.tech/writing',
   },
