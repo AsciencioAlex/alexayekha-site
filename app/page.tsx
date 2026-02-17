@@ -60,14 +60,71 @@ export default function Home() {
 
       {/* Systems in Production */}
       <section className="mt-20 rounded-2xl p-8 md:p-10" style={{ backgroundColor: 'rgba(30, 64, 175, 0.03)' }}>
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-6">
           <div className="h-1 w-12 rounded-full" style={{ backgroundColor: 'var(--accent)' }}></div>
           <h2 className="text-2xl font-semibold">Systems in Production</h2>
         </div>
-        <p className="text-neutral-600 leading-relaxed text-lg">
-          Systems deployed across logistics, crypto infrastructure, and high-scale operations.
-          Platforms built: real-time driver tracking, treasury automation, multi-sig wallets, distributed backends.
+        <ul className="space-y-3 text-neutral-700">
+          <li className="flex items-start">
+            <span className="mr-3 mt-1.5" style={{ color: 'var(--accent)' }}>▪</span>
+            <span><strong>Real-time driver tracking</strong> — 5-second streaming updates, WebSocket architecture</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-3 mt-1.5" style={{ color: 'var(--accent)' }}>▪</span>
+            <span><strong>Crypto treasury automation</strong> — Multi-sig + audit layer, secure on/off-ramps</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-3 mt-1.5" style={{ color: 'var(--accent)' }}>▪</span>
+            <span><strong>Distributed Laravel + Node backends</strong> — Hybrid architecture for scale</span>
+          </li>
+          <li className="flex items-start">
+            <span className="mr-3 mt-1.5" style={{ color: 'var(--accent)' }}>▪</span>
+            <span><strong>Demand-aware dispatch systems</strong> — Intelligent routing and assignment logic</span>
+          </li>
+        </ul>
+      </section>
+
+      {/* Systems Philosophy */}
+      <section className="mt-20 space-y-6">
+        <div className="flex items-center gap-3">
+          <div className="h-1 w-12 rounded-full" style={{ backgroundColor: 'var(--accent)' }}></div>
+          <h2 className="text-2xl font-semibold">Systems Philosophy</h2>
+        </div>
+        <p className="text-neutral-700 text-lg leading-relaxed max-w-3xl">
+          My work centers on reducing operational entropy through infrastructure design, distributed decision systems, 
+          and intelligent automation. I focus on practical systems that operate under real-world constraints: 
+          <strong> latency, cost, reliability, and scale</strong>.
         </p>
+      </section>
+
+      {/* Operational Outcomes */}
+      <section className="mt-20 rounded-2xl border-2 p-8 md:p-10" style={{ borderColor: 'var(--accent)', backgroundColor: 'rgba(30, 64, 175, 0.02)' }}>
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-1 w-12 rounded-full" style={{ backgroundColor: 'var(--accent)' }}></div>
+          <h2 className="text-2xl font-semibold">Operational Outcomes</h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-4">
+            <div>
+              <div className="text-3xl font-bold" style={{ color: 'var(--accent)' }}>60%</div>
+              <div className="text-sm text-neutral-600 mt-1">Improved UI smoothness through optimized rendering</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold" style={{ color: 'var(--accent)' }}>40%</div>
+              <div className="text-sm text-neutral-600 mt-1">Reduced dispatch assignment time via intelligent routing</div>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <div>
+              <div className="text-3xl font-bold" style={{ color: 'var(--accent)' }}>85%</div>
+              <div className="text-sm text-neutral-600 mt-1">Reduced redundant polling through WebSocket architecture</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold" style={{ color: 'var(--accent)' }}>25%</div>
+              <div className="text-sm text-neutral-600 mt-1">Lowered trip cancellation rate with demand-aware systems</div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Focus Areas */}
@@ -83,9 +140,9 @@ export default function Home() {
                  style={{ backgroundColor: 'rgba(30, 64, 175, 0.1)', color: 'var(--accent)' }}>
               ⛓
             </div>
-            <h3 className="font-semibold text-lg mb-2">Blockchain infrastructure</h3>
+            <h3 className="font-bold text-lg mb-2">Blockchain Infrastructure</h3>
             <p className="text-neutral-600 text-sm leading-relaxed">
-              RPC architecture, treasury systems, secure on/off-ramp pipelines.
+              RPC architecture, treasury systems, secure on/off-ramps.
             </p>
           </div>
           
@@ -94,9 +151,9 @@ export default function Home() {
                  style={{ backgroundColor: 'rgba(30, 64, 175, 0.1)', color: 'var(--accent)' }}>
               🤖
             </div>
-            <h3 className="font-semibold text-lg mb-2">Applied AI</h3>
+            <h3 className="font-bold text-lg mb-2">Applied AI</h3>
             <p className="text-neutral-600 text-sm leading-relaxed">
-              Pragmatic ML systems, deployment patterns, and decision frameworks.
+              Pragmatic ML systems, deployment patterns, decision frameworks.
             </p>
           </div>
           
@@ -105,9 +162,9 @@ export default function Home() {
                  style={{ backgroundColor: 'rgba(30, 64, 175, 0.1)', color: 'var(--accent)' }}>
               ⚙️
             </div>
-            <h3 className="font-semibold text-lg mb-2">Executive engineering</h3>
+            <h3 className="font-bold text-lg mb-2">Executive Engineering</h3>
             <p className="text-neutral-600 text-sm leading-relaxed">
-              Scaling teams, build vs buy, reliability, security, and systems thinking.
+              Scaling teams, build vs buy, reliability, security, systems thinking.
             </p>
           </div>
         </div>
@@ -122,30 +179,30 @@ export default function Home() {
 
         <div className="space-y-6">
           {/* Featured Article */}
-          <a className="group block rounded-2xl border-2 p-8 hover:shadow-lg transition-all" 
-             style={{ borderColor: 'var(--accent)', backgroundColor: 'rgba(30, 64, 175, 0.02)' }}
+          <a className="group block rounded-2xl border-2 p-10 hover:shadow-xl transition-all" 
+             style={{ borderColor: 'var(--accent)', backgroundColor: 'rgba(30, 64, 175, 0.05)' }}
              href="/writing/logistics-optimization">
-            <div className="flex justify-between items-start mb-4">
-              <div className="inline-block px-2.5 py-1 rounded-md text-xs font-semibold" 
+            <div className="flex justify-between items-start mb-5">
+              <div className="inline-block px-3 py-1.5 rounded-md text-xs font-bold" 
                    style={{ backgroundColor: 'var(--accent)', color: 'white' }}>
-                Featured
+                FEATURED
               </div>
               <div className="text-xs text-neutral-500 font-medium">Feb 2026 • 12 min read</div>
             </div>
-            <h3 className="text-2xl font-semibold mb-3 group-hover:" style={{ color: 'var(--accent)' }}>
+            <h3 className="text-3xl font-bold mb-4 group-hover:opacity-90" style={{ color: 'var(--accent)' }}>
               Optimizing Logistics Systems Using Modern Infrastructure
             </h3>
-            <p className="text-neutral-600 leading-relaxed mb-4">
+            <p className="text-neutral-700 text-lg leading-relaxed mb-5">
               A systems-level breakdown of real-time tracking, distributed backends, and intelligent dispatch.
             </p>
             <div className="flex flex-wrap gap-2">
-              <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-neutral-100 text-neutral-600">
+              <span className="px-3 py-1.5 rounded-md text-xs font-semibold bg-white text-neutral-700 border border-neutral-200">
                 Architecture diagrams
               </span>
-              <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-neutral-100 text-neutral-600">
+              <span className="px-3 py-1.5 rounded-md text-xs font-semibold bg-white text-neutral-700 border border-neutral-200">
                 Case study
               </span>
-              <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-neutral-100 text-neutral-600">
+              <span className="px-3 py-1.5 rounded-md text-xs font-semibold bg-white text-neutral-700 border border-neutral-200">
                 Measurable impact
               </span>
             </div>
@@ -190,17 +247,31 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="mt-24 pt-12 border-t-2 border-neutral-100">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
           <div>
             <p className="text-sm text-neutral-600 mb-2">
               <span className="font-medium">Alex Ayekha</span> • CTO & Systems Builder
             </p>
-            <p className="text-sm text-neutral-500">
+            <p className="text-sm text-neutral-500 mb-3">
               Contact:{" "}
               <a className="font-medium transition-colors" style={{ color: 'var(--accent)' }} href="mailto:alex@alexayekha.tech">
                 alex@alexayekha.tech
               </a>
             </p>
+            <div className="flex gap-4">
+              <a href="https://linkedin.com/in/alexayekha" target="_blank" rel="noopener noreferrer" 
+                 className="text-neutral-600 hover:opacity-70 transition-colors text-sm">
+                LinkedIn
+              </a>
+              <a href="https://github.com/alexayekha" target="_blank" rel="noopener noreferrer" 
+                 className="text-neutral-600 hover:opacity-70 transition-colors text-sm">
+                GitHub
+              </a>
+              <a href="https://twitter.com/alexayekha" target="_blank" rel="noopener noreferrer" 
+                 className="text-neutral-600 hover:opacity-70 transition-colors text-sm">
+                Twitter
+              </a>
+            </div>
           </div>
           <div className="flex gap-4 text-sm">
             <a href="/writing" className="text-neutral-600 hover:opacity-70 transition-colors">
