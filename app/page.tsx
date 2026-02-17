@@ -136,8 +136,8 @@ export default function Home() {
       <footer className="mt-16 border-t pt-8 text-sm text-neutral-500 space-y-3">
         <p>
           Contact:{" "}
-          <a className="underline" href="mailto:alex@alexayekha.tech">
-            alex@alexayekha.tech
+          <a className="underline" href="mailto:asciencioalex@gmail.com">
+            asciencioalex@gmail.com
           </a>
         </p>
         <div className="flex gap-5">
