@@ -17,15 +17,15 @@ Below is a practical breakdown of how modern infrastructure improves logistics p
 
 ## System Architecture Overview
 
-<Mermaid chart={`
-flowchart LR
+<Mermaid>
+{`flowchart LR
     A[Driver App - GPS] --> B[API Gateway]
     B --> C[Location Service]
     C --> D[Redis / Queue]
     D --> E[Dispatch Engine]
     E --> F[Customer App]
-    E --> G[Admin Dashboard]
-`} />
+    E --> G[Admin Dashboard]`}
+</Mermaid>
 
 This architecture enables:
 
@@ -58,16 +58,16 @@ In a live deployment, the system operated with:
 
 Instead of updating marker positions instantly, interpolation was introduced.
 
-<Mermaid chart={`
-sequenceDiagram
+<Mermaid>
+{`sequenceDiagram
     participant Driver
     participant API
     participant MapUI
 
     Driver->>API: Send GPS (5s interval)
     API->>MapUI: Broadcast location
-    MapUI->>MapUI: Interpolate position
-`} />
+    MapUI->>MapUI: Interpolate position`}
+</Mermaid>
 
 Result:
 - 60% improvement in visual smoothness
@@ -79,16 +79,16 @@ Result:
 
 Dispatch decisions moved from manual assignment to scoring logic.
 
-<Mermaid chart={`
-flowchart TD
+<Mermaid>
+{`flowchart TD
     A[Incoming Trip Request]
     B[Fetch Nearby Drivers]
     C[Score Drivers]
     D[Rank Drivers]
     E[Notify Top Candidates]
 
-    A --> B --> C --> D --> E
-`} />
+    A --> B --> C --> D --> E`}
+</Mermaid>
 
 Scoring factors included:
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import { formatDate } from "@/lib/reading-time";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,8 +17,8 @@ export default function WritingIndex() {
   const posts = getAllPosts();
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
-      <header className="space-y-3">
-        <h1 className="text-3xl font-semibold tracking-tight">Writing</h1>
+      <header className="space-y-3 pb-6 border-b">
+        <h1 className="text-3xl font-semibold tracking-tight border-l-2 pl-3" style={{ borderColor: 'var(--accent)' }}>Writing</h1>
         <p className="text-neutral-700">
           High-signal notes on applied AI, blockchain infrastructure, and executive engineering.
         </p>
@@ -32,14 +33,19 @@ export default function WritingIndex() {
           <Link
             key={p.slug}
             href={`/writing/${p.slug}`}
-            className="block rounded-xl border p-4 hover:bg-neutral-50"
+            className="group block rounded-xl border border-neutral-200 p-5 hover:border-neutral-400 hover:shadow-sm transition-all"
           >
-            <div className="text-sm text-neutral-500">
-              {p.category ? `${p.category} • ` : ""}{p.date}
+            <div className="flex justify-between items-start">
+              <div className="text-xs text-neutral-500 font-medium">
+                {p.category}
+              </div>
+              <div className="text-xs text-neutral-400">
+                {formatDate(p.date)}
+              </div>
             </div>
-            <div className="font-medium">{p.title}</div>
+            <div className="font-medium mt-2 group-hover:text-blue-800">{p.title}</div>
             {p.summary ? (
-              <div className="mt-1 text-sm text-neutral-600">{p.summary}</div>
+              <div className="mt-1.5 text-sm text-neutral-600 leading-relaxed">{p.summary}</div>
             ) : null}
           </Link>
         ))}

@@ -62,7 +62,7 @@ export default async function PostPage({
     source: mdxSource,
     options: { parseFrontmatter: true },
     components: {
-      Mermaid: (props: any) => <Mermaid {...props} />,
+      Mermaid,
     },
   });
 
