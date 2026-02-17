@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
+import { getAllTags } from "@/lib/tags";
 import { formatDate } from "@/lib/reading-time";
 import type { Metadata } from "next";
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 
 export default function WritingIndex() {
   const posts = getAllPosts();
+  const tags = getAllTags();
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
       <header className="space-y-3 pb-6 border-b">
@@ -22,9 +24,16 @@ export default function WritingIndex() {
         <p className="text-neutral-700">
           High-signal notes on applied AI, blockchain infrastructure, and executive engineering.
         </p>
-        <div className="flex gap-4 text-sm">
-          <a className="underline text-neutral-600" href="/rss.xml">RSS</a>
-          <Link className="underline text-neutral-600" href="/tags">Tags</Link>
+        <div className="flex flex-wrap gap-2 pt-1">
+          {tags.map((tag) => (
+            <Link
+              key={tag}
+              href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+              className="rounded-full border border-neutral-200 px-3 py-1 text-xs text-neutral-600 hover:border-neutral-400 hover:bg-neutral-50 transition-colors"
+            >
+              {tag}
+            </Link>
+          ))}
         </div>
       </header>
 
