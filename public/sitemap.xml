@@ -59,6 +59,13 @@
   </url>
 
   <url>
+    <loc>https://alexayekha.tech/writing/logistics-optimization/</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://alexayekha.tech/tags/multisig/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -132,6 +139,36 @@
 
   <url>
     <loc>https://alexayekha.tech/tags/hybrid-systems/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://alexayekha.tech/tags/logistics/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://alexayekha.tech/tags/optimization/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://alexayekha.tech/tags/ai/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://alexayekha.tech/tags/distributed-systems/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://alexayekha.tech/tags/infrastructure/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

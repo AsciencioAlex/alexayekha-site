@@ -4,6 +4,7 @@ import fs from "fs";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { tagToSlug } from "@/lib/tags";
+import Mermaid from "@/components/Mermaid";
 
 // Required for static export: prebuild all routes
 export function generateStaticParams() {
@@ -60,6 +61,9 @@ export default async function PostPage({
   const { content } = await compileMDX({
     source: mdxSource,
     options: { parseFrontmatter: true },
+    components: {
+      Mermaid: (props: any) => <Mermaid {...props} />,
+    },
   });
 
   return (

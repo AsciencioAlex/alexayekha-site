@@ -5,7 +5,15 @@
   <link>https://alexayekha.tech</link>
   <description>CTO • MSc IT Candidate • Applied AI &amp; Blockchain Infrastructure. Writing on systems, cryptography, and real-world engineering.</description>
   <language>en</language>
-  <lastBuildDate>Mon, 16 Feb 2026 11:26:43 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 17 Feb 2026 09:30:52 GMT</lastBuildDate>
+
+  <item>
+    <title>Optimizing Logistics Systems Using Modern Infrastructure and Intelligent Tooling</title>
+    <link>https://alexayekha.tech/writing/logistics-optimization/</link>
+    <guid isPermaLink="true">https://alexayekha.tech/writing/logistics-optimization/</guid>
+    <pubDate>Tue, 17 Feb 2026 00:00:00 GMT</pubDate>
+    <description>A systems-level breakdown of how real-time tracking, distributed backend architecture, and intelligent dispatch systems optimize logistics operations.</description>
+  </item>
 
   <item>
     <title>Designing Secure Crypto Treasury Infrastructure</title>
