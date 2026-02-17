@@ -133,13 +133,18 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="mt-16 border-t pt-8 text-sm text-neutral-500">
+      <footer className="mt-16 border-t pt-8 text-sm text-neutral-500 space-y-3">
         <p>
           Contact:{" "}
           <a className="underline" href="mailto:alex@alexayekha.tech">
             alex@alexayekha.tech
           </a>
         </p>
+        <div className="flex gap-4">
+          <a className="underline hover:text-neutral-700 transition-colors" href="https://github.com/AsciencioAlex" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a className="underline hover:text-neutral-700 transition-colors" href="https://www.linkedin.com/in/alex-asciencio/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a className="underline hover:text-neutral-700 transition-colors" href="https://x.com/codnetech" target="_blank" rel="noopener noreferrer">X</a>
+        </div>
       </footer>
     </main>
   );
