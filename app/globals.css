@@ -3,25 +3,26 @@
 /* -------------------------------------------------------------------------- */
 /* Design Tokens & Theme Variables                                            */
 /* -------------------------------------------------------------------------- */
+
 :root {
   --background: #fcfcfc;
-  --foreground: #0f172a; /* Slate 900 for high-contrast readability */
-  --muted-text: #64748b; /* Slate 500 */
-  --border-color: #e2e8f0; /* Slate 200 */
+  --foreground: #0f172a;
+  --muted-text: #64748b;
+  --border-color: #e2e8f0;
   --card-bg: #ffffff;
-  --code-bg: #f1f5f9; /* Slate 100 */
-  --accent: #2563eb; /* Vibrant Blue */
+  --code-bg: #f1f5f9;
+  --accent: #2563eb;
   --accent-hover: #1d4ed8;
   --selection-bg: #dbeafe;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #090d16; /* Deep executive navy/black */
-    --foreground: #f8fafc; /* Slate 50 */
-    --muted-text: #94a3b8; /* Slate 400 */
-    --border-color: #1e293b; /* Slate 800 */
-    --card-bg: #0f172a; /* Slate 900 */
+    --background: #090d16;
+    --foreground: #f8fafc;
+    --muted-text: #94a3b8;
+    --border-color: #1e293b;
+    --card-bg: #0f172a;
     --code-bg: #1e293b;
     --accent: #3b82f6;
     --accent-hover: #60a5fa;
@@ -30,16 +31,32 @@
 }
 
 /* -------------------------------------------------------------------------- */
-/* Base & Global Styles                                                        */
+/* Base & Global Styles                                                       */
 /* -------------------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  min-height: 100vh;
+  margin: 0;
   background-color: var(--background);
   color: var(--foreground);
-  /* Modern clean font stack */
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Inter",
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    sans-serif;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
 }
 
 ::selection {
@@ -47,143 +64,164 @@ body {
   color: var(--foreground);
 }
 
-/* Smooth anchor link scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
 /* -------------------------------------------------------------------------- */
-/* Modern UI Component Extensions                                            */
+/* Modern UI Components                                                       */
 /* -------------------------------------------------------------------------- */
 
-/* Custom Card styling for home page / case studies */
 .card-container {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 0.75rem;
-  transition: all 0.2s ease-in-out;
+  transition:
+    border-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
 }
 
 .card-container:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 30px -10px rgba(15, 23, 42, 0.18);
+  transform: translateY(-2px);
 }
 
-/* Button & Pill link polishes */
 .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--foreground);
   color: var(--background);
   font-weight: 500;
   border-radius: 9999px;
   padding: 0.5rem 1.25rem;
-  transition: opacity 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .btn-primary:hover {
   opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 /* -------------------------------------------------------------------------- */
-/* Prose Typography (for MDX & Blog Posts)                                     */
+/* Prose Typography for MDX and Writing Pages                                 */
 /* -------------------------------------------------------------------------- */
+
 .prose {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
   color: var(--foreground);
-  max-width: 68ch; /* Optimal line length for reading ergonomics */
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 1.0625rem;
 }
+
+/*
+ * Keep text at a comfortable reading width while allowing diagrams,
+ * images, tables and code blocks to use the full article column.
+ */
+.prose > p,
+.prose > ul,
+.prose > ol,
+.prose > blockquote,
+.prose > h1,
+.prose > h2,
+.prose > h3,
+.prose > h4,
+.prose > h5,
+.prose > h6 {
+  max-width: 74ch;
+}
+
+/* Headings */
 
 .prose h1,
 .prose h2,
 .prose h3,
-.prose h4 {
+.prose h4,
+.prose h5,
+.prose h6 {
   color: var(--foreground);
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.25;
+  scroll-margin-top: 6rem;
 }
 
 .prose h1 {
-  font-size: 2.25rem;
   margin-top: 0;
   margin-bottom: 1.5rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
 }
 
 .prose h2 {
-  font-size: 1.625rem;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+  margin-top: 3.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.65rem;
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.5rem;
+  font-size: clamp(1.65rem, 3vw, 2rem);
 }
 
 .prose h3 {
-  font-size: 1.35rem;
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.55rem);
+}
+
+.prose h4 {
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  font-size: 1.2rem;
 }
+
+/* Paragraphs */
 
 .prose p {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-  line-height: 1.8;
+  color: var(--foreground);
+  line-height: 1.85;
+}
+
+/* Strong and emphasis */
+
+.prose strong {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.prose em {
   color: var(--foreground);
 }
 
 /* Links */
+
 .prose a {
   color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
   font-weight: 500;
-  transition: color 0.15s ease;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  text-underline-offset: 4px;
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
 }
 
 .prose a:hover {
   color: var(--accent-hover);
+  text-decoration-color: var(--accent-hover);
 }
 
-/* Inline Code */
-.prose code {
-  font-family: ui-monospace, SFMono-Regular, Meni, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.875em;
-  font-weight: 600;
-  background-color: var(--code-bg);
-  color: var(--accent);
-  padding: 0.2em 0.4em;
-  border-radius: 0.375rem;
-  border: 1px solid var(--border-color);
-}
+/* -------------------------------------------------------------------------- */
+/* Lists                                                                      */
+/* -------------------------------------------------------------------------- */
 
-/* Code Blocks */
-.prose pre {
-  background-color: #0d1117; /* GitHub Dark theme aesthetic */
-  color: #f0f6fc;
-  padding: 1.25rem 1.5rem;
-  border-radius: 0.75rem;
-  border: 1px solid var(--border-color);
-  overflow-x: auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.prose pre code {
-  background: transparent;
-  border: 0;
-  padding: 0;
-  color: inherit;
-  font-size: 0.9em;
-  line-height: 1.6;
-}
-
-/* Lists */
 .prose ul,
 .prose ol {
   margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
-  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 1.75rem;
 }
 
 .prose ul {
@@ -195,18 +233,170 @@ html {
 }
 
 .prose li {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.7;
+  margin-top: 0.55rem;
+  margin-bottom: 0.55rem;
+  padding-left: 0.25rem;
+  line-height: 1.75;
 }
 
-/* Tables */
-.prose table {
+.prose li::marker {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.prose li > p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Nested lists */
+
+.prose li ul,
+.prose li ol {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Inline Code                                                                */
+/* -------------------------------------------------------------------------- */
+
+.prose code {
+  padding: 0.2em 0.42em;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  background-color: var(--code-bg);
+  color: var(--accent);
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+  font-size: 0.875em;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Prevent backticks from being added by typography plugins */
+
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Code Blocks                                                                */
+/* -------------------------------------------------------------------------- */
+
+.prose pre {
   width: 100%;
-  border-collapse: collapse;
+  max-width: 100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  background-color: #0d1117;
+  color: #f0f6fc;
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.3);
+  line-height: 1.65;
+  tab-size: 2;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose pre code {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 0.9em;
+  font-weight: 400;
+  line-height: inherit;
+  white-space: pre;
+  overflow-wrap: normal;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Images, Figures and Diagrams                                               */
+/* -------------------------------------------------------------------------- */
+
+.prose img,
+.prose svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.prose img {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  background-color: var(--card-bg);
+}
+
+.prose figure {
+  width: 100%;
+  max-width: 100%;
+  margin: 2.5rem 0;
+}
+
+.prose figcaption {
+  max-width: 74ch;
+  margin-top: 0.75rem;
+  color: var(--muted-text);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Mermaid diagrams */
+
+.prose .mermaid {
+  width: 100%;
+  max-width: 100%;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  background-color: var(--card-bg);
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose .mermaid svg {
+  width: 100%;
+  min-width: 680px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tables                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.prose table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  border-collapse: collapse;
   font-size: 0.95rem;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose thead {
+  background-color: var(--code-bg);
 }
 
 .prose th,
@@ -214,31 +404,182 @@ html {
   padding: 0.875rem 1rem;
   border: 1px solid var(--border-color);
   text-align: left;
+  vertical-align: top;
 }
 
 .prose th {
-  font-weight: 600;
-  background-color: var(--code-bg);
+  color: var(--foreground);
+  font-weight: 700;
 }
 
-/* Blockquotes */
+.prose td {
+  color: var(--foreground);
+}
+
+.prose tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.prose tbody tr:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--code-bg) 55%,
+    transparent
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Blockquotes                                                                */
+/* -------------------------------------------------------------------------- */
+
 .prose blockquote {
-  font-style: normal;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border-color);
   border-left: 4px solid var(--accent);
+  border-radius: 0 0.625rem 0.625rem 0;
   background-color: var(--card-bg);
-  padding: 1rem 1.25rem;
-  border-radius: 0 0.5rem 0.5rem 0;
-  margin: 1.75rem 0;
   color: var(--muted-text);
+  font-style: normal;
+  box-shadow: 0 4px 15px -10px rgba(15, 23, 42, 0.2);
 }
 
 .prose blockquote p {
   margin: 0;
+  color: inherit;
 }
 
+.prose blockquote p + p {
+  margin-top: 1rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Horizontal Rules                                                           */
+/* -------------------------------------------------------------------------- */
+
 .prose hr {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+  max-width: 100%;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
   border: 0;
   border-top: 1px solid var(--border-color);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Definition Lists                                                           */
+/* -------------------------------------------------------------------------- */
+
+.prose dl {
+  max-width: 74ch;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose dt {
+  margin-top: 1.25rem;
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+.prose dd {
+  margin-top: 0.5rem;
+  margin-left: 0;
+  color: var(--muted-text);
+  line-height: 1.75;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Responsive Adjustments                                                     */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .prose > p,
+  .prose > ul,
+  .prose > ol,
+  .prose > blockquote,
+  .prose > h1,
+  .prose > h2,
+  .prose > h3,
+  .prose > h4,
+  .prose > h5,
+  .prose > h6 {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .prose {
+    font-size: 1rem;
+  }
+
+  .prose h1 {
+    font-size: 2rem;
+  }
+
+  .prose h2 {
+    margin-top: 3rem;
+    font-size: 1.55rem;
+  }
+
+  .prose h3 {
+    margin-top: 2.25rem;
+    font-size: 1.3rem;
+  }
+
+  .prose p {
+    line-height: 1.8;
+  }
+
+  .prose pre {
+    margin-right: -0.25rem;
+    margin-left: -0.25rem;
+    padding: 1rem;
+    border-radius: 0.625rem;
+  }
+
+  .prose .mermaid {
+    padding: 1rem;
+  }
+
+  .prose .mermaid svg {
+    min-width: 600px;
+  }
+
+  .prose th,
+  .prose td {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .prose h1 {
+    font-size: 1.8rem;
+  }
+
+  .prose h2 {
+    font-size: 1.45rem;
+  }
+
+  .prose blockquote {
+    padding: 1rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Reduced Motion                                                             */
+/* -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
