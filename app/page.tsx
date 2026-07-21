@@ -8,52 +8,67 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16">
+    <main className="mx-auto max-w-5xl px-6 md:px-12 py-16">
       {/* Hero Section */}
-      <header className="space-y-4 pb-8 border-b border-neutral-200 dark:border-neutral-800">
-        <p className="text-xs uppercase tracking-widest font-mono font-semibold" style={{ color: 'var(--accent)' }}>
+      <header className="pb-10 border-b border-neutral-200 dark:border-neutral-800">
+        <p className="text-xs uppercase tracking-widest font-mono font-semibold mb-3" style={{ color: 'var(--accent)' }}>
           IT &amp; IS Manager · Technology Executive · Systems Architect
         </p>
 
-        <h1 className="text-4xl font-semibold tracking-tight">
-          <span className="border-b-2" style={{ borderColor: 'var(--accent)' }}>Alex Ascencio Ayekha</span>
-        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+          <div className="md:col-span-2 space-y-4">
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+              <span className="border-b-2" style={{ borderColor: 'var(--accent)' }}>Alex Ascencio Ayekha</span>
+            </h1>
 
-        <p className="text-sm text-neutral-500 dark:text-neutral-400">
-          IT &amp; IS Manager at Sintel Security Print • Former CTO at OhCargo • Enterprise Security • Crypto Infrastructure
-        </p>
+            <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400">
+              IT &amp; IS Manager at Sintel Security Print • Former CTO at OhCargo • Enterprise Security • Crypto Infrastructure
+            </p>
 
-        <p className="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
-          Designing high-trust infrastructure for enterprise security, logistics, and fintech.
-          I focus on reducing operational entropy through zero-trust architecture, automation, and decision systems.
-        </p>
+            <p className="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300 pt-2">
+              Designing high-trust infrastructure for enterprise security, logistics, and fintech.
+              I focus on reducing operational entropy through zero-trust architecture, automation, and decision systems.
+            </p>
 
-        <div className="flex flex-wrap gap-3 pt-2">
-          <Link
-            className="rounded-full px-5 py-2 text-sm font-medium transition-all shadow-sm"
-            style={{ backgroundColor: 'var(--foreground)', color: 'var(--background)' }}
-            href="/writing"
-          >
-            Read writing →
-          </Link>
-          <Link
-            className="rounded-full border border-neutral-300 dark:border-neutral-700 px-4 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-            href="/case-studies"
-          >
-            View case studies
-          </Link>
-          <Link
-            className="rounded-full border border-neutral-300 dark:border-neutral-700 px-4 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-            href="/research"
-          >
-            Research notes
-          </Link>
-          <Link
-            className="rounded-full border border-neutral-300 dark:border-neutral-700 px-4 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-            href="/about"
-          >
-            About
-          </Link>
+            <div className="flex flex-wrap gap-3 pt-4">
+              <Link
+                className="rounded-full px-6 py-2.5 text-sm font-medium transition-all shadow-sm"
+                style={{ backgroundColor: 'var(--foreground)', color: 'var(--background)' }}
+                href="/writing"
+              >
+                Read writing →
+              </Link>
+              <Link
+                className="rounded-full border border-neutral-300 dark:border-neutral-700 px-5 py-2.5 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                href="/case-studies"
+              >
+                View case studies
+              </Link>
+              <Link
+                className="rounded-full border border-neutral-300 dark:border-neutral-700 px-5 py-2.5 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                href="/research"
+              >
+                Research notes
+              </Link>
+              <Link
+                className="rounded-full border border-neutral-300 dark:border-neutral-700 px-5 py-2.5 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                href="/about"
+              >
+                About
+              </Link>
+            </div>
+          </div>
+
+          {/* Quick Info Sidebar Card */}
+          <div className="hidden md:block card-container p-6 space-y-3 border-l-4" style={{ borderLeftColor: 'var(--accent)' }}>
+            <h3 className="text-xs uppercase tracking-wider font-mono text-neutral-400">Executive Profile</h3>
+            <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              8+ years leading IT governance, enterprise security, and software architecture across distributed platforms.
+            </p>
+            <div className="pt-2 text-xs font-medium" style={{ color: 'var(--accent)' }}>
+              Nairobi, Kenya 🇰🇪
+            </div>
+          </div>
         </div>
       </header>
 
@@ -62,7 +77,7 @@ export default function Home() {
         <h2 className="text-lg font-medium border-l-2 pl-3" style={{ borderColor: 'var(--accent)' }}>
           Systems in Production
         </h2>
-        <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl">
           Systems deployed across high-security enterprise environments, real-time logistics, and crypto infrastructure.
           Platforms built: enterprise ISMS frameworks, secure financial print workflows, driver tracking networks, treasury automation, and multi-sig wallets.
         </p>
@@ -74,24 +89,24 @@ export default function Home() {
           Focus areas
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
-          <div className="card-container p-4">
-            <h3 className="font-semibold text-sm mb-1">🔒 Information Security &amp; ISMS</h3>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+          <div className="card-container p-6">
+            <h3 className="font-semibold text-base mb-2">🔒 Information Security &amp; ISMS</h3>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
               Zero-trust architecture, security governance, and high-trust financial software/hardware systems.
             </p>
           </div>
 
-          <div className="card-container p-4">
-            <h3 className="font-semibold text-sm mb-1">⛓️ Blockchain Infrastructure</h3>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+          <div className="card-container p-6">
+            <h3 className="font-semibold text-base mb-2">⛓️ Blockchain Infrastructure</h3>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
               RPC architecture, multisig treasury systems, and secure on/off-ramp pipelines.
             </p>
           </div>
 
-          <div className="card-container p-4">
-            <h3 className="font-semibold text-sm mb-1">⚙️ Executive Engineering</h3>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+          <div className="card-container p-6">
+            <h3 className="font-semibold text-base mb-2">⚙️ Executive Engineering</h3>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
               Scaling teams, build vs. buy models, system reliability, and operational efficiency.
             </p>
           </div>
@@ -106,14 +121,14 @@ export default function Home() {
 
         <div className="space-y-4">
           <Link 
-            className="group block card-container p-5 transition-all" 
+            className="group block card-container p-6 transition-all" 
             href="/writing/logistics-optimization"
           >
             <div className="flex justify-between items-start">
               <div className="text-xs text-neutral-500 font-medium">Systems</div>
               <div className="text-xs text-neutral-400">Feb 2026 • 12 min</div>
             </div>
-            <div className="font-medium mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <div className="font-semibold text-lg mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               Optimizing Logistics Systems Using Modern Infrastructure
             </div>
             <div className="mt-1.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
@@ -125,14 +140,14 @@ export default function Home() {
           </Link>
 
           <Link 
-            className="group block card-container p-5 transition-all" 
+            className="group block card-container p-6 transition-all" 
             href="/writing/crypto-treasury"
           >
             <div className="flex justify-between items-start">
               <div className="text-xs text-neutral-500 font-medium">Blockchain</div>
               <div className="text-xs text-neutral-400">Feb 2026 • 8 min</div>
             </div>
-            <div className="font-medium mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <div className="font-semibold text-lg mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               Designing Secure Crypto Treasury Infrastructure
             </div>
             <div className="mt-1.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
@@ -141,14 +156,14 @@ export default function Home() {
           </Link>
 
           <Link 
-            className="group block card-container p-5 transition-all" 
+            className="group block card-container p-6 transition-all" 
             href="/writing/cto-blockchain-framework"
           >
             <div className="flex justify-between items-start">
               <div className="text-xs text-neutral-500 font-medium">Strategy</div>
               <div className="text-xs text-neutral-400">Feb 2026 • 10 min</div>
             </div>
-            <div className="font-medium mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <div className="font-semibold text-lg mt-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               A CTO Framework: When to Use Blockchain (and When Not To)
             </div>
             <div className="mt-1.5 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
@@ -174,7 +189,7 @@ export default function Home() {
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           </a>
           <a className="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors" href="https://www.linkedin.com/in/alex-asciencio/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
           <a className="hover:text-neutral-700 dark:hover:text-neutral-300 transition-colors" href="https://x.com/codnetech" target="_blank" rel="noopener noreferrer" aria-label="X">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
