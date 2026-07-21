@@ -15,11 +15,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://alexayekha.tech'),
   title: {
-    default: 'Alex Ascencio Ayekha | Technology Executive & CTO',
+    default: 'Alex Ascencio Ayekha | IT & IS Manager · Technology Executive',
     template: '%s | Alex Ascencio Ayekha',
   },
-  description: 'Technology Executive and CTO with 8+ years building and scaling digital platforms across logistics, fintech, and enterprise systems. Writing on architecture, security, and systems thinking.',
-  keywords: ['CTO', 'technology executive', 'systems architect', 'blockchain', 'logistics', 'fintech', 'AI', 'architecture', 'engineering', 'security', 'infrastructure'],
+  description: 'IT & IS Manager, Technology Executive, and Systems Architect with 8+ years building and securing digital platforms across fintech, logistics, enterprise security, and distributed systems.',
+  keywords: [
+    'IT Manager', 
+    'Information Security Manager', 
+    'ISMS', 
+    'technology executive', 
+    'systems architect', 
+    'enterprise security', 
+    'blockchain', 
+    'logistics', 
+    'fintech', 
+    'infrastructure'
+  ],
   authors: [{ name: 'Alex Ascencio Ayekha', url: 'https://alexayekha.tech' }],
   creator: 'Alex Ascencio Ayekha',
   openGraph: {
@@ -27,21 +38,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://alexayekha.tech',
     siteName: 'Alex Ascencio Ayekha',
-    title: 'Alex Ascencio Ayekha | Technology Executive & CTO',
-    description: 'Technology Executive and CTO with 8+ years building and scaling digital platforms across logistics, fintech, and enterprise systems.',
+    title: 'Alex Ascencio Ayekha | IT & IS Manager · Technology Executive',
+    description: 'IT & IS Manager, Technology Executive, and Systems Architect with 8+ years building, securing, and scaling enterprise systems.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Alex Ascencio Ayekha',
+        alt: 'Alex Ascencio Ayekha - Technology Executive',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alex Ascencio Ayekha | Technology Executive & CTO',
-    description: 'Technology Executive and CTO with 8+ years building and scaling digital platforms across logistics, fintech, and enterprise systems.',
+    title: 'Alex Ascencio Ayekha | IT & IS Manager · Technology Executive',
+    description: 'IT & IS Manager, Technology Executive, and Systems Architect with 8+ years building, securing, and scaling enterprise systems.',
     images: ['/og-image.png'],
   },
   robots: {
