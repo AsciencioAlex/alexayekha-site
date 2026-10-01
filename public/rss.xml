@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Alex Ascencio Ayekha</title>
+  <title>Alex Ayekha - Technology Executive</title>
   <link>https://alexayekha.tech</link>
-  <description>CTO • MSc IT Candidate • Applied AI &amp; Blockchain Infrastructure. Writing on systems, cryptography, and real-world engineering.</description>
+  <atom:link href="https://alexayekha.tech/rss.xml" rel="self" type="application/rss+xml" />
+  <description>Executive technology insights on cybersecurity, enterprise architecture, digital platforms, fintech, AI, and technology strategy.</description>
   <language>en</language>
-  <lastBuildDate>Tue, 17 Feb 2026 13:46:55 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 19:42:44 GMT</lastBuildDate>
 
   <item>
     <title>Optimizing Logistics Systems Using Modern Infrastructure and Intelligent Tooling</title>
     <link>https://alexayekha.tech/writing/logistics-optimization/</link>
     <guid isPermaLink="true">https://alexayekha.tech/writing/logistics-optimization/</guid>
     <pubDate>Tue, 17 Feb 2026 00:00:00 GMT</pubDate>
+    <category>Systems</category>
     <description>A systems-level breakdown of how real-time tracking, distributed backend architecture, and intelligent dispatch systems optimize logistics operations.</description>
   </item>
 
@@ -20,15 +22,17 @@
     <link>https://alexayekha.tech/writing/crypto-treasury/</link>
     <guid isPermaLink="true">https://alexayekha.tech/writing/crypto-treasury/</guid>
     <pubDate>Sun, 15 Feb 2026 00:00:00 GMT</pubDate>
+    <category>Blockchain</category>
     <description>A practical blueprint for multisig, controls, monitoring, and incident response.</description>
   </item>
 
   <item>
-    <title>A CTO Framework: When to Use Blockchain (and When Not To)</title>
+    <title>A CTO Framework: When to Use Blockchain and When Not To</title>
     <link>https://alexayekha.tech/writing/cto-blockchain-framework/</link>
     <guid isPermaLink="true">https://alexayekha.tech/writing/cto-blockchain-framework/</guid>
     <pubDate>Tue, 10 Feb 2026 00:00:00 GMT</pubDate>
-    <description>A decision model grounded in cost, trust boundaries, and operational realities.</description>
+    <category>Strategy</category>
+    <description>A practical decision framework for evaluating blockchain based on trust boundaries, governance, cost, and operational requirements.</description>
   </item>
 
   <item>
@@ -36,6 +40,7 @@
     <link>https://alexayekha.tech/writing/laravel-node-architecture/</link>
     <guid isPermaLink="true">https://alexayekha.tech/writing/laravel-node-architecture/</guid>
     <pubDate>Thu, 05 Feb 2026 00:00:00 GMT</pubDate>
+    <category>Systems</category>
     <description>Patterns for queues, events, crypto listeners, observability, and scaling.</description>
   </item>
 </channel>

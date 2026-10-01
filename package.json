@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-rss.mjs && node scripts/generate-sitemap.mjs",
+    "content:audit": "node scripts/audit-content.mjs",
+    "prebuild": "node scripts/audit-content.mjs && node scripts/generate-rss.mjs && node scripts/generate-sitemap.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

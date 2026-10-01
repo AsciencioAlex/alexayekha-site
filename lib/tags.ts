@@ -1,28 +1,27 @@
-import { getAllPosts, PostMeta } from "./posts";
+import { getAllPosts, type PostMeta } from "./posts";
 
-export function tagToSlug(tag: string) {
-  return encodeURIComponent(tag.trim().toLowerCase().replace(/\s+/g, "-"));
+export function tagToSlug(tag: string): string {
+  return tag
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
-export function slugToTag(slug: string, allTags: string[]) {
+export function slugToTag(slug: string, allTags: string[]): string | null {
   const normalized = decodeURIComponent(slug).trim().toLowerCase();
-  // match by slug form
-  const found = allTags.find((t) => tagToSlug(t) === normalized);
-  return found ?? null;
+  return allTags.find((tag) => tagToSlug(tag) === normalized) ?? null;
 }
 
-export function getAllTags() {
-  const posts = getAllPosts();
-  const set = new Set<string>();
-
-  for (const p of posts) {
-    for (const t of p.tags ?? []) set.add(t);
+export function getAllTags(): string[] {
+  const tags = new Set<string>();
+  for (const post of getAllPosts()) {
+    for (const tag of post.tags ?? []) tags.add(tag);
   }
-
-  return Array.from(set).sort((a, b) => a.localeCompare(b));
+  return Array.from(tags).sort((a, b) => a.localeCompare(b));
 }
 
 export function getPostsByTag(tag: string): PostMeta[] {
-  const posts = getAllPosts();
-  return posts.filter((p) => (p.tags ?? []).includes(tag));
+  return getAllPosts().filter((post) => (post.tags ?? []).includes(tag));
 }
