@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-require-imports */
 
 const fs = require('fs');
 const path = require('path');
@@ -27,7 +27,7 @@ async function createPost() {
   const category = await ask('Category (Blockchain/Strategy/Systems/AI): ');
   const summary = await ask('Summary (one line): ');
   const tagsInput = await ask('Tags (comma-separated): ');
-  
+
   const slug = slugify(title);
   const date = new Date().toISOString().split('T')[0];
   const tags = tagsInput.split(',').map(t => `"${t.trim()}"`).join(', ');
@@ -64,16 +64,16 @@ Wrap up your thoughts.
 `;
 
   const filePath = path.join(process.cwd(), 'content', 'writing', `${slug}.mdx`);
-  
+
   fs.writeFileSync(filePath, frontmatter);
-  
+
   console.log(`\n✅ Created: content/writing/${slug}.mdx`);
   console.log(`\nNext steps:`);
   console.log(`  1. Edit the file`);
   console.log(`  2. git add content/writing/${slug}.mdx`);
   console.log(`  3. git commit -m "Add post: ${title}"`);
   console.log(`  4. git push\n`);
-  
+
   rl.close();
 }
 

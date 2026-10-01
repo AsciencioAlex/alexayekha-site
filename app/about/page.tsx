@@ -1,160 +1,168 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 
+import Container from "@/components/Container";
+import SectionHeading from "@/components/SectionHeading";
+import { siteConfig } from "@/lib/site";
+
 export const metadata: Metadata = {
-  title: 'About — Alex Ascencio Ayekha',
-  description: 'IT & IS Manager, Technology Executive, and Systems Architect with 8+ years building and securing digital platforms across fintech, logistics, and enterprise infrastructure.',
+  title: "About",
+  description:
+    "About Alex Asciencio Ayekha: technology executive, IT and information security leader, former CTO, and systems architect.",
+  alternates: { canonical: "/about" },
   openGraph: {
-    title: 'About — Alex Ascencio Ayekha',
-    description: 'IT & IS Manager, Technology Executive, and Systems Architect with 8+ years building and securing digital platforms across fintech, logistics, and enterprise infrastructure.',
-    url: 'https://alexayekha.tech/about',
+    title: `About | ${siteConfig.name}`,
+    description:
+      "Technology leadership across cybersecurity, enterprise architecture, infrastructure, digital platforms, fintech, and logistics.",
+    url: `${siteConfig.url}/about/`,
   },
 };
 
+const remit = [
+  "Technology strategy, roadmaps, investment priorities, and operating models",
+  "Information security governance, risk, audit readiness, and control assurance",
+  "Enterprise infrastructure, platform reliability, continuity, and disaster recovery",
+  "Architecture decisions across applications, integrations, data, cloud, and on-premise systems",
+  "Vendor management, technical due diligence, procurement input, and delivery oversight",
+  "Cross-functional translation between business leadership, operations, security, and engineering",
+];
+
 export default function About() {
   return (
-    <main className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-      {/* Header */}
-      <header className="pb-8 border-b">
-        <h1 className="text-4xl font-semibold tracking-tight">
-          Alex Ascencio Ayekha
-        </h1>
-        <p className="mt-2 text-neutral-500 text-sm tracking-wide">
-          IT &amp; IS Manager · Technology Executive · Systems Architect
-        </p>
-      </header>
-
-      {/* Executive Summary */}
-      <section className="mt-12 space-y-4">
-        <h2 className="text-lg font-medium border-l-2 pl-3" style={{ borderColor: 'var(--accent)' }}>
-          Executive Summary
-        </h2>
-        <p className="text-neutral-700 leading-relaxed">
-          Alex Ascencio Ayekha is an IT &amp; Information Security Manager, Technology Executive, and Full Stack Systems Architect with over eight years of experience building, securing, and scaling enterprise platforms across financial services, logistics, fintech, and high-security environments.
-        </p>
-        <p className="text-neutral-700 leading-relaxed">
-          He currently serves as IT &amp; IS Manager at Sintel Security Print, leading information security posture, IT governance, enterprise infrastructure, and digital systems architecture.
-        </p>
-        <p className="text-neutral-700 leading-relaxed">
-          His work focuses on designing production-grade infrastructure, zero-trust security frameworks, distributed systems, secure payment pipelines, and applied AI-driven optimization.
-        </p>
-      </section>
-
-      {/* Systems & Platform Experience */}
-      <section className="mt-12 space-y-4">
-        <h2 className="text-lg font-medium border-l-2 pl-3" style={{ borderColor: 'var(--accent)' }}>
-          Systems &amp; Platform Experience
-        </h2>
-        <ul className="space-y-2 text-neutral-700 leading-relaxed">
-          <li>Enterprise IT infrastructure &amp; Information Security Management Systems (ISMS)</li>
-          <li>Secure financial print, payment, and tokenization hardware/software workflows</li>
-          <li>Real-time logistics and fleet tracking systems</li>
-          <li>Distributed backend architectures (Laravel + Node.js hybrid systems)</li>
-          <li>Crypto treasury and multi-signature wallet infrastructure</li>
-          <li>Event-driven dispatch and intelligent scoring systems</li>
-        </ul>
-      </section>
-
-      {/* Leadership & Execution */}
-      <section className="mt-12 space-y-4">
-        <h2 className="text-lg font-medium border-l-2 pl-3" style={{ borderColor: 'var(--accent)' }}>
-          Leadership &amp; Execution
-        </h2>
-        <p className="text-neutral-700 leading-relaxed">
-          In his leadership capacity, Alex directs:
-        </p>
-        <ul className="space-y-2 text-neutral-700 leading-relaxed">
-          <li>Information security strategy, risk governance, and compliance standards</li>
-          <li>Enterprise IT operations and platform reliability engineering</li>
-          <li>System architecture design and high-availability infrastructure planning</li>
-          <li>Build vs. buy technical frameworks and security audits</li>
-          <li>Cross-functional alignment between engineering, operations, and executive leadership</li>
-        </ul>
-      </section>
-
-      {/* Professional Background */}
-      <section className="mt-12 space-y-4">
-        <h2 className="text-lg font-medium border-l-2 pl-3" style={{ borderColor: 'var(--accent)' }}>
-          Professional Background
-        </h2>
-        <p className="text-neutral-700 leading-relaxed">
-          Prior to his current role at Sintel Security Print, Alex delivered secure, scalable platforms across logistics, fintech, financial services, and healthcare at:
-        </p>
-        <ul className="space-y-2 text-neutral-700 leading-relaxed">
-          <li>OhCargo (Former Chief Technology Officer)</li>
-          <li>Aviemo (Former Chief Technology Officer)</li>
-          <li>Equity Bank of Kenya</li>
-          <li>Ebeesco LLC Ltd</li>
-          <li>Solace Cancer Foundation</li>
-          <li>Lacodet Solutions Ltd</li>
-        </ul>
-      </section>
-
-      {/* Education */}
-      <section className="mt-12 space-y-4">
-        <h2 className="text-lg font-medium border-l-2 pl-3" style={{ borderColor: 'var(--accent)' }}>
-          Education
-        </h2>
-        <div className="space-y-3 text-neutral-700">
+    <main className="page-space">
+      <Container>
+        <header className="grid gap-10 border-b border-slate-200 pb-12 lg:grid-cols-[1fr_0.7fr] lg:items-end dark:border-slate-800">
           <div>
-            <p className="font-medium">Master of Science in Information Technology</p>
-            <p className="text-sm text-neutral-500">Murang&apos;a University of Technology (In Progress)</p>
+            <p className="eyebrow">Executive profile</p>
+            <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-6xl dark:text-white">I lead technology at the intersection of business, security, architecture, and operations.</h1>
           </div>
-          <div>
-            <p className="font-medium">Bachelor of Business Information Technology</p>
-            <p className="text-sm text-neutral-500">Murang&apos;a University of Technology</p>
-          </div>
-        </div>
-      </section>
+          <p className="text-lg leading-8 text-slate-600 dark:text-slate-300">
+            My work is centred on making technology dependable enough for the business to trust: secure by design, operationally resilient, financially sensible, and aligned to measurable outcomes.
+          </p>
+        </header>
 
-      {/* Engineering Philosophy */}
-      <section className="mt-12 space-y-4">
-        <h2 className="text-lg font-medium border-l-2 pl-3" style={{ borderColor: 'var(--accent)' }}>
-          Engineering &amp; Security Philosophy
-        </h2>
-        <ul className="space-y-2 text-neutral-700 leading-relaxed">
-          <li>Zero-trust architecture and proactive risk posture over reactive patches</li>
-          <li>Systems thinking over isolated feature development</li>
-          <li>Reliability and observability as non-negotiable core principles</li>
-          <li>Practical AI and automation over speculative trends</li>
-          <li>Operational resilience as a business enabler</li>
-        </ul>
-      </section>
+        <section className="section-space grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+          <SectionHeading eyebrow="Profile" title="From engineering depth to executive accountability" />
+          <div className="space-y-5 text-base leading-8 text-slate-600 sm:text-lg dark:text-slate-300">
+            <p>
+              I am {siteConfig.fullName}, an IT and information security leader with more than eight years of experience across enterprise technology, software architecture, fintech, logistics, and high-trust operational environments.
+            </p>
+            <p>
+              I currently serve as an IT & IS Manager, with responsibility spanning technology operations, information security, infrastructure, vendors, audit and compliance support, recovery planning, and digital systems. Earlier in my career I held CTO responsibilities in technology ventures, where the mandate was broader: product architecture, engineering execution, platform scale, and translating commercial priorities into working systems.
+            </p>
+            <p>
+              That combination shapes how I think. I am comfortable at implementation depth, but I evaluate technology through an executive lens: what risk does it remove, what capability does it create, what does it cost to operate, how will it fail, and can the organisation govern it effectively?
+            </p>
+          </div>
+        </section>
 
-      {/* Contact */}
-      <section className="mt-12 space-y-4">
-        <h2 className="text-lg font-medium border-l-2 pl-3" style={{ borderColor: 'var(--accent)' }}>
-          Contact
-        </h2>
-        <div className="space-y-2 text-neutral-700">
-          <div>
-            <span className="font-medium">Email: </span>
-            <a className="underline" href="mailto:alex@alexayekha.tech">alex@alexayekha.tech</a>
+        <section className="section-space border-y border-slate-200 dark:border-slate-800">
+          <SectionHeading
+            eyebrow="Leadership remit"
+            title="The areas I am accountable for"
+            description="My strongest work sits where technology decisions become operational and business decisions."
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {remit.map((item, index) => (
+              <div key={item} className="surface-card flex gap-4 p-5 sm:p-6">
+                <span className="mt-0.5 font-mono text-sm text-blue-700 dark:text-blue-300">0{index + 1}</span>
+                <p className="leading-7 text-slate-700 dark:text-slate-300">{item}</p>
+              </div>
+            ))}
           </div>
-          <div>
-            <span className="font-medium">GitHub: </span>
-            <a className="underline" href="https://github.com/AsciencioAlex" target="_blank" rel="noopener noreferrer">
-              github.com/AsciencioAlex
-            </a>
-          </div>
-          <div>
-            <span className="font-medium">LinkedIn: </span>
-            <a className="underline" href="https://www.linkedin.com/in/alex-asciencio/" target="_blank" rel="noopener noreferrer">
-              linkedin.com/in/alex-asciencio
-            </a>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer Nav */}
-      <footer className="mt-16 border-t pt-6 text-sm text-neutral-500">
-        <div className="flex flex-wrap gap-4">
-          <Link className="hover:text-neutral-700 transition-colors" href="/">← Home</Link>
-          <Link className="hover:text-neutral-700 transition-colors" href="/writing">Writing</Link>
-          <Link className="hover:text-neutral-700 transition-colors" href="/case-studies">Case Studies</Link>
-          <a className="hover:text-neutral-700 transition-colors" href="/rss.xml">RSS</a>
-        </div>
-      </footer>
+        <section className="section-space grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+          <SectionHeading eyebrow="Career" title="A progression from systems to strategy" />
+          <div className="divide-y divide-slate-200 border-y border-slate-200 dark:divide-slate-800 dark:border-slate-800">
+            {[
+              ["Current", "IT & IS Manager", "Enterprise IT, information security, governance, resilience, infrastructure, vendors, assurance, and digital systems."],
+              ["Previous", "Chief Technology Officer - OhCargo", "Technology strategy, platform architecture, real-time logistics systems, engineering leadership, and product execution."],
+              ["Previous", "Chief Technology Officer - Aviemo", "Technology leadership, architecture, and delivery in a venture environment."],
+              ["Foundation", "Software, financial services & digital platforms", "Hands-on experience that built the engineering and systems perspective behind my current leadership approach."],
+            ].map(([period, role, detail]) => (
+              <div key={role} className="grid gap-2 py-6 sm:grid-cols-[110px_230px_1fr] sm:gap-5">
+                <div className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700 dark:text-blue-300">{period}</div>
+                <div className="font-semibold text-slate-950 dark:text-white">{role}</div>
+                <div className="text-sm leading-6 text-slate-600 dark:text-slate-300">{detail}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="section-space border-t border-slate-200 dark:border-slate-800">
+          <div className="grid gap-10 lg:grid-cols-2">
+            <div>
+              <p className="eyebrow">Education</p>
+              <div className="space-y-6">
+                <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                  <h3 className="text-xl font-semibold text-slate-950 dark:text-white">
+                    Master of Business Administration (MBA)
+                  </h3>
+                  <p className="mt-2 text-base text-slate-500 dark:text-slate-400">
+                    University of the People · In progress
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                  <h3 className="text-xl font-semibold text-slate-950 dark:text-white">
+                    Master of Science in Information Technology (MSc IT)
+                  </h3>
+
+                  <p className="mt-2 text-base text-slate-500 dark:text-slate-400">
+                    Murang&apos;a University of Technology · 2025–2027 · Thesis stage
+                  </p>
+
+                  <div className="mt-5 border-l-2 border-blue-600 pl-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-600">
+                      Research Focus
+                    </p>
+
+                    <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                      Blockchain-Enabled Explainable Machine Learning Model for Fraud
+                      Detection and Evidence Integrity in Online Financial Transactions
+                    </p>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+                  <h3 className="text-xl font-semibold text-slate-950 dark:text-white">
+                    Bachelor of Business Information Technology
+                  </h3>
+                  <p className="mt-2 text-base text-slate-500 dark:text-slate-400">
+                    Murang&apos;a University of Technology
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p className="eyebrow">Leadership philosophy</p>
+              <div className="mt-6 space-y-3">
+                {[
+                  "Technology strategy should be legible to the business.",
+                  "Security controls should improve trust without making operations impossible.",
+                  "Recovery capability matters more than recovery documentation.",
+                  "Architecture should reduce long-term operational complexity.",
+                  "A technology leader must be able to move between board-level trade-offs and implementation reality.",
+                ].map((item) => (
+                  <div key={item} className="border-l-2 border-blue-600 py-1 pl-4 text-slate-700 dark:text-slate-300">{item}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="pb-4">
+          <div className="rounded-3xl bg-slate-950 p-8 text-white sm:p-10">
+            <p className="eyebrow text-blue-300">Contact</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">For technology, architecture, security, or executive conversations.</h2>
+            <div className="mt-6 flex flex-wrap gap-4 text-sm">
+              <a className="rounded-full bg-white px-5 py-2.5 font-semibold text-slate-950" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+              <a className="rounded-full border border-slate-700 px-5 py-2.5 font-semibold text-white hover:border-blue-400" href={siteConfig.socials.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+              <a className="rounded-full border border-slate-700 px-5 py-2.5 font-semibold text-white hover:border-blue-400" href={siteConfig.socials.github} target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+        </section>
+      </Container>
     </main>
   );
 }
