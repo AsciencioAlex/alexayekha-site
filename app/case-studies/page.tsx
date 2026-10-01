@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function CaseStudies() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16">
+    <main className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
       <h1 className="text-3xl font-semibold tracking-tight">Case Studies</h1>
       <p className="mt-3 text-neutral-700">
         Selected architecture and implementation work. Where needed, details are anonymized,
