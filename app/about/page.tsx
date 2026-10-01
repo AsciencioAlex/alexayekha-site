@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16">
+    <main className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
       {/* Header */}
       <header className="pb-8 border-b">
         <h1 className="text-4xl font-semibold tracking-tight">
